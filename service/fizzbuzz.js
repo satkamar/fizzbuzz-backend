@@ -9,22 +9,23 @@ class Fizzbuzz {
    */
   getFizzBuzz(count = 100) {
     try {
-
-      let resultSet = []
       
-      for (let i = 1; i <= parseInt(count); i++) {
-        if (i % 3 == 0 && i % 5 != 0)
-          resultSet.push("Fizz")
-        else if (i % 3 != 0 && i % 5 == 0)
-          resultSet.push("Buzz")
-        else if (i % 3 == 0 && i % 5 == 0)
-          resultSet.push("FizzBuzz")
-        else
-          resultSet.push(i)
-      }
-      return resultSet
-    } catch (error) {
+      // Check: is count interger or string
+      if(isNaN(count)) 
+        throw {status: 417, message: "Expecting integer value"}
+      else {
+        let resultSet = []
 
+        // Iterate the loop till count given by user and generate the array
+        for (var i = 1; i <= parseInt(count); i++) {
+          let mod3 = i % 3 == 0, mod5 = i % 5 == 0;
+          resultSet.push(mod3 ? (mod5 ? "FizzBuzz" : "Fizz") : (mod5 ? "Buzz" : i));
+        }
+        return resultSet
+      }
+      
+    } catch (error) {
+      throw error
     }
   }
 }
