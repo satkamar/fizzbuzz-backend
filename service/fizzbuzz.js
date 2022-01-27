@@ -13,6 +13,8 @@ class Fizzbuzz {
       // Check: is count interger or string
       if(isNaN(count)) 
         throw {status: 417, message: "Expecting integer value"}
+      else if(!isNaN(parseInt(count)) && parseInt(count) > 100 ) 
+        throw {status: 417, message: "We are allowing the count from 1 to 100"}
       else {
         let resultSet = []
 
